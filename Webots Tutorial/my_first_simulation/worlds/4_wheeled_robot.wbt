@@ -1,0 +1,146 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material2 "dumbbell"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.006478330604133642 0.9998037241286336 -0.01872283234712896 0.6659203945825812
+  position -0.7379112001906932 -0.0392775034314318 0.49784741178091474
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.442671 0.430073 0.06
+  rotation 0 0 1 1.5708
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.410482 0.436512 0.05
+  rotation 0 0 1 1.5708
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.384708 -0.433087 0.06
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+DEF WALL_1 Solid {
+  translation 0 0.52 0.05
+  children [
+    DEF Wall Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0.498039
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.05 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+}
+DEF WALL_2 Solid {
+  translation 0.51 5.19998e-07 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE Wall
+  ]
+  name "solid(3)"
+}
+DEF WALL_3 Solid {
+  translation 0 -0.52 0.05
+  children [
+    USE Wall
+  ]
+  name "solid(2)"
+}
+DEF WALL_4 Solid {
+  translation -0.52 -1.91002e-06 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE Wall
+  ]
+  name "solid(4)"
+}
+Robot {
+  translation 0 0 0.06
+  rotation 0 0 1 4.692820414042842e-06
+  children [
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.049999999999999975 0.06 3.308722450212111e-24
+        rotation 1 0 0 1.5708
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.666667 0 1
+            }
+            geometry Cylinder {
+              height 0.04
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF physics_wh Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0.06 0
+        rotation 1 0 0 1.5708
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE physics_wh
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+}

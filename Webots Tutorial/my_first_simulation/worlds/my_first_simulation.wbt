@@ -1,0 +1,61 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.020920803390668215 0.995222601993173 0.09536399985019095 0.4340588250621997
+  position -1.752622297103723 -0.09669547927984554 0.8270392457091187
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.442671 0.430073 0.06
+  rotation 0 0 1 1.5708
+  size 0.1 0.1 0.1
+}
+E-puck {
+  controller "EPuckGoForward"
+}
+WoodenBox {
+  translation 0.410482 0.436512 0.05
+  rotation 0 0 1 1.5708
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.384708 -0.433087 0.06
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+Solid {
+  translation 0.2 0.2 0.2
+  rotation 0 1 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  boundingObject Sphere {
+    radius 0.1
+  }
+  physics Physics {
+  }
+}

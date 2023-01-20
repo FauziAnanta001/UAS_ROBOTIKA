@@ -1,0 +1,96 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.08017144370868581 0.27645297758672316 0.9576775505341555 0.5881122084123755
+  position -1.8817928684923395 -1.2366843709949191 0.7983626562843413
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.442671 0.430073 0.06
+  rotation 0 0 1 1.5708
+  size 0.1 0.1 0.1
+}
+E-puck {
+  controller "EPuckGoForward"
+}
+WoodenBox {
+  translation 0.410482 0.436512 0.05
+  rotation 0 0 1 1.5708
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.384708 -0.433087 0.06
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+DEF BALL Solid {
+  translation 0.2 0.2 0.2
+  rotation 0 1 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY_ Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY_
+  physics Physics {
+  }
+}
+DEF WALL_1 Solid {
+  translation 0 0.52 0.05
+  children [
+    DEF Wall Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 1 0.05 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+}
+DEF WALL_2 Solid {
+  translation 0.51 5.19998e-07 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE Wall
+  ]
+  name "solid(3)"
+}
+DEF WALL_3 Solid {
+  translation 0 -0.52 0.05
+  children [
+    USE Wall
+  ]
+  name "solid(2)"
+}
+DEF WALL_4 Solid {
+  translation -0.52 -1.91002e-06 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE Wall
+  ]
+  name "solid(4)"
+}
